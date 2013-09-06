@@ -2,7 +2,7 @@
 include_once("wx_tpl.php");
 // define your token
 define("TOKEN", "kavichen");
-$wechatObj = new wechatCallbackapiTest();
+$wechatObj = new wechatCallback();
 $wechatObj->responseMsg();
 // $wechatObj->valid();
 // $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -66,7 +66,7 @@ $wechatObj->responseMsg();
 //     exit;
 // }
 
-class wechatCallbackapiTest
+class wechatCallback
 {
     public function valid()
     {
