@@ -7,11 +7,11 @@
 define("TOKEN", "kavichen");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->responseMsg();
-//$wechatObj->valid();
+$wechatObj->valid();
 
 class wechatCallbackapiTest
 {
-    /*public function valid()
+    public function valid()
     {
         $echoStr = $_GET["echostr"];
 
@@ -20,7 +20,7 @@ class wechatCallbackapiTest
             echo $echoStr;
             exit;
         }
-    }*/
+    }
 
     public function responseMsg()
     {
