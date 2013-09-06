@@ -18,35 +18,35 @@ if (!empty($postStr)){
     
     $from_MsgType = $postObj->MsgType; // 消息类型
 
-    // if($from_MsgType == "subscribe")
-    // {
-    //     $msgType = "text";
-    //      $contentStr = "[玫瑰]";
-    //         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
-    //         echo $resultStr;
-    //         exit;
-    // }
-
-    switch($from_MsgType)
+    if($from_MsgType == "subscribe")
     {
-    case "text":
-        // $resultStr = $this->handleText($postObj);
-        break;
-    case "event":
-        $from_Event  = $postObj->Event; 
-        if($from_Event == "subscribe")  // 关注时需要发送的信息
-        {
-            $msgType = "text";
-            $contentStr = "[害羞]";
+        $msgType = "text";
+         $contentStr = "[玫瑰]";
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
             echo $resultStr;
             exit;
-        }
-    default:
-        $resultStr = "Unknow msg type: ".$from_MsgType;
-        break;
     }
-    echo $resultStr;
+
+    // switch($from_MsgType)
+    // {
+    // case "text":
+    //     // $resultStr = $this->handleText($postObj);
+    //     break;
+    // case "event":
+    //     $from_Event  = $postObj->Event; 
+    //     if($from_Event == "subscribe")  // 关注时需要发送的信息
+    //     {
+    //         $msgType = "text";
+    //         $contentStr = "[害羞]";
+    //         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
+    //         echo $resultStr;
+    //         exit;
+    //     }
+    // default:
+    //     $resultStr = "Unknow msg type: ".$from_MsgType;
+    //     break;
+    // }
+    // echo $resultStr;
 }
 else {
     echo "fuck";
