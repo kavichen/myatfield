@@ -68,6 +68,7 @@ $wechatObj->responseMsg();
 
 class wechatCallback
 {
+    include("wx_tpl.php");
     public function valid()
     {
         $echoStr = $_GET["echostr"];
@@ -112,18 +113,19 @@ class wechatCallback
 
     public function handleText($postObj)
     {
+        include("wx_tpl.php");
         $fromUsername = $postObj->FromUserName;
         $toUsername = $postObj->ToUserName;
         $keyword = trim($postObj->Content);
         $time = time();
-        $textTpl = "<xml>
-                    <ToUserName><![CDATA[%s]]></ToUserName>
-                    <FromUserName><![CDATA[%s]]></FromUserName>
-                    <CreateTime>%s</CreateTime>
-                    <MsgType><![CDATA[%s]]></MsgType>
-                    <Content><![CDATA[%s]]></Content>
-                    <FuncFlag>0</FuncFlag>
-                    </xml>";             
+        // $textTpl = "<xml>
+        //             <ToUserName><![CDATA[%s]]></ToUserName>
+        //             <FromUserName><![CDATA[%s]]></FromUserName>
+        //             <CreateTime>%s</CreateTime>
+        //             <MsgType><![CDATA[%s]]></MsgType>
+        //             <Content><![CDATA[%s]]></Content>
+        //             <FuncFlag>0</FuncFlag>
+        //             </xml>";             
         if(!empty( $keyword ))
         {
             $msgType = "text";
