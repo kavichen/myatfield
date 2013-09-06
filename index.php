@@ -113,12 +113,12 @@ class wechatCallback
 
     public function handleText($postObj)
     {
-        
+        include("wx_tpl.php");
         $fromUsername = $postObj->FromUserName;
         $toUsername = $postObj->ToUserName;
         $keyword = trim($postObj->Content);
         $time = time();
-        include("wx_tpl.php");
+        // include("wx_tpl.php");
         // $textTpl = "<xml>
         //             <ToUserName><![CDATA[%s]]></ToUserName>
         //             <FromUserName><![CDATA[%s]]></FromUserName>
