@@ -68,7 +68,7 @@ $wechatObj->responseMsg();
 
 class wechatCallback
 {
-    include("wx_tpl.php");
+    // include("wx_tpl.php");
     public function valid()
     {
         $echoStr = $_GET["echostr"];
@@ -113,7 +113,7 @@ class wechatCallback
 
     public function handleText($postObj)
     {
-        // include("wx_tpl.php");
+        include_once("wx_tpl.php");
         $fromUsername = $postObj->FromUserName;
         $toUsername = $postObj->ToUserName;
         $keyword = trim($postObj->Content);
@@ -186,20 +186,13 @@ class wechatCallback
     
     public function responseText($object, $content, $flag=0)
     {
-        $textTpl = "<xml>
-                    <ToUserName><![CDATA[%s]]></ToUserName>
-                    <FromUserName><![CDATA[%s]]></FromUserName>
-                    <CreateTime>%s</CreateTime>
-                    <MsgType><![CDATA[text]]></MsgType>
-                    <Content><![CDATA[%s]]></Content>
-                    <FuncFlag>%d</FuncFlag>
-                    </xml>";
+        include_once(wx_tpl.php);
         $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, time(), $content, $flag);
         return $resultStr;
     }
 
     private function weather($n){
-        include("weather_cityId.php");
+        include_once("weather_cityId.php");
         $c_name = $weather_cityId[$n];
         if(!empty($c_name)){
             $json=file_get_contents("http://m.weather.com.cn/data/".$c_name.".html");
