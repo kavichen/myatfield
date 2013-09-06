@@ -145,7 +145,7 @@ class wechatCallbackapiTest
         }
         else
         {
-            return null;
+            return $c_name;
         }
     }
 
