@@ -18,6 +18,15 @@ if (!empty($postStr)){
     
     $from_MsgType = $postObj->MsgType; // 消息类型
 
+    // if($from_MsgType == "subscribe")
+    // {
+    //     $msgType = "text";
+    //      $contentStr = "[玫瑰]";
+    //         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
+    //         echo $resultStr;
+    //         exit;
+    // }
+
     switch($from_MsgType)
     {
     case "text":
@@ -37,7 +46,7 @@ if (!empty($postStr)){
         $resultStr = "Unknow msg type: ".$from_MsgType;
         break;
     }
-    // echo $resultStr;
+    echo $resultStr;
 }
 else {
     echo "fuck";
