@@ -68,7 +68,7 @@ $wechatObj->responseMsg();
 
 class wechatCallback
 {
-    // include("wx_tpl.php");
+    include("wx_tpl.php");
     public function valid()
     {
         $echoStr = $_GET["echostr"];
