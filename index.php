@@ -16,7 +16,7 @@ if (!empty($postStr)){
 
     $toUsername = $postObj->ToUserName; // 接收消息方 ID
     
-    $from_MsgType = trim($postObj->MsgType); // 消息类型
+    $from_MsgType = $postObj->MsgType; // 消息类型
 
     if($from_MsgType=="event")
     {
@@ -28,6 +28,9 @@ if (!empty($postStr)){
                 echo $resultStr;
                 exit;
         }
+    }else if($from_MsgType == "text"){
+        echo "fuck";
+        exit;
     }
 
 
