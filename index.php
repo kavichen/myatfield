@@ -137,7 +137,7 @@ class wechatCallbackapiTest
     }
 
     private function weather($n){
-        include("weather_cityId.php");
+        include("cityID.php");
         $c_name = $weather_cityId[$n];
         if(!empty($c_name)){
             $json=file_get_contents("http://m.weather.com.cn/data/".$c_name.".html");
