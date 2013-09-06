@@ -1,5 +1,5 @@
 <?php
-include_once("wx_tpl.php");
+include("wx_tpl.php");
 // define your token
 define("TOKEN", "kavichen");
 $wechatObj = new wechatCallback();
