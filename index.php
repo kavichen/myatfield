@@ -21,7 +21,7 @@ if (!empty($postStr)){
     switch($from_MsgType)
     {
     case "text":
-        $resultStr = $this->handleText($postObj);
+        // $resultStr = $this->handleText($postObj);
         break;
     case "event":
         $from_Event  = $postObj->Event; 
