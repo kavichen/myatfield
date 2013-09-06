@@ -186,7 +186,7 @@ class wechatCallback
     
     public function responseText($object, $content, $flag=0)
     {
-        include_once(wx_tpl.php);
+        include_once("wx_tpl.php");
         $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, time(), $content, $flag);
         return $resultStr;
     }
