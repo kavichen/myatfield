@@ -68,15 +68,11 @@ class wechatCallbackapiTest
                     </xml>";             
         if(!empty( $keyword ))
         {
-            // $msgType = "text";
-            // $contentStr = "陈琦威：".
-            //                 "\n".
-            //                 "平台目前处于开发阶段，我可以收到你发过来的信息，但是不能处理，请见谅！";
             $msgType = "text";
             // 天气
             $str = mb_substr($keyword, -2, 2,"UTF-8");
             $str_key = mb_substr($keyword, 0, -2,"UTF-8");
-            if($str == '天气' && !empty($str_key)){
+            if(($str == '天气' || $str == '天氣') && !empty($str_key)){
                 $data = $this->weather($str_key);
                 if(empty($data->weatherinfo)){
                     $contentStr = "干，没有查到\"".$str_key."\"的天气信息！";
