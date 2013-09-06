@@ -48,6 +48,7 @@ if (!empty($postStr)){
         }
     default:
         $resultStr = "Unknow msg type: ".$from_MsgType;
+        echo $resultStr;
         break;
     }
     // echo $resultStr;
