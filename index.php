@@ -76,7 +76,7 @@ class wechatCallbackapiTest
 
             $str = mb_substr($keyword, -2, 2,"UTF-8");
             $str_key = mb_substr($keyword, 0, -2,"UTF-8");
-            if($str == '天气' && !empty($str)){
+            if($str == '天气' && !empty($str_key)){
                 $data = $this->weather($str_key);
                 if(empty($data->weatherinfo)){
                     $contentStr = "干，没有查到\"".$str_key."\"的天气信息！";
