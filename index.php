@@ -18,39 +18,44 @@ if (!empty($postStr)){
     
     $from_MsgType = trim($postObj->MsgType); // 消息类型
 
-    // if($from_MsgType == "subscribe")
+    if($from_MsgType=="event")
+    {
+        if($from_MsgType == "subscribe")
+        {
+            $msgType = "text";
+             $contentStr = "[玫瑰]";
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
+                echo $resultStr;
+                exit;
+        }
+    }
+
+
+
+    // switch($from_MsgType)
     // {
-    //     $msgType = "text";
-    //      $contentStr = "[玫瑰]";
+    // case "text":
+
+    //     $contentStr = "[害羞]";
+    //     $resultStr = sprintf($textTpl,$fromUsername,$toUsername,time(),$msgType,$contentStr);
+    //     echo $resultStr;
+    //     // $resultStr = $this->handleText($postObj);
+    //     exit;
+    // case "event":
+    //     $from_Event  = $postObj->Event; 
+    //     if($from_Event == "subscribe")  // 关注时需要发送的信息
+    //     {
+    //         $msgType = "text";
+    //         $contentStr = "[害羞]";
     //         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
     //         echo $resultStr;
     //         exit;
+    //     }
+    // default:
+    //     $resultStr = "Unknow msg type: ".$from_MsgType;
+    //     echo $resultStr;
+    //     break;
     // }
-
-    switch($from_MsgType)
-    {
-    case "text":
-
-        $contentStr = "[害羞]";
-        $resultStr = sprintf($textTpl,$fromUsername,$toUsername,time(),$msgType,$contentStr);
-        echo $resultStr;
-        // $resultStr = $this->handleText($postObj);
-        exit;
-    case "event":
-        $from_Event  = $postObj->Event; 
-        if($from_Event == "subscribe")  // 关注时需要发送的信息
-        {
-            $msgType = "text";
-            $contentStr = "[害羞]";
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
-            echo $resultStr;
-            exit;
-        }
-    default:
-        $resultStr = "Unknow msg type: ".$from_MsgType;
-        echo $resultStr;
-        break;
-    }
     // echo $resultStr;
 }
 else {
