@@ -113,7 +113,7 @@ class wechatCallback
 
     public function handleText($postObj)
     {
-        include("wx_tpl.php");
+        include_once("wx_tpl.php");
         $fromUsername = $postObj->FromUserName;
         $toUsername = $postObj->ToUserName;
         $keyword = trim($postObj->Content);
