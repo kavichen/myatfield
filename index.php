@@ -73,7 +73,7 @@ class wechatCallbackapiTest
             //                 "\n".
             //                 "平台目前处于开发阶段，我可以收到你发过来的信息，但是不能处理，请见谅！";
             $msgType = "text";
-
+            // 天气
             $str = mb_substr($keyword, -2, 2,"UTF-8");
             $str_key = mb_substr($keyword, 0, -2,"UTF-8");
             if($str == '天气' && !empty($str_key)){
