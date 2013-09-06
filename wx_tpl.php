@@ -1,13 +1,13 @@
 <?php
 
 $textTpl = "<xml>
-			 <ToUserName><![CDATA[toUser]]></ToUserName>
-			 <FromUserName><![CDATA[fromUser]]></FromUserName> 
-			 <CreateTime>1348831860</CreateTime>
-			 <MsgType><![CDATA[text]]></MsgType>
-			 <Content><![CDATA[this is a test]]></Content>
-			 <MsgId>1234567890123456</MsgId>
-			 </xml>";
+            <ToUserName><![CDATA[%s]]></ToUserName>
+            <FromUserName><![CDATA[%s]]></FromUserName>
+            <CreateTime>%s</CreateTime>
+            <MsgType><![CDATA[%s]]></MsgType>
+            <Content><![CDATA[%s]]></Content>
+            <FuncFlag>0</FuncFlag>
+            </xml>";  
 
 $imageTpl = " <xml>
 			 <ToUserName><![CDATA[toUser]]></ToUserName>
