@@ -186,14 +186,15 @@ class wechatCallback
     
     public function responseText($object, $content, $flag=0)
     {
-        $textTpl = "<xml>
-                    <ToUserName><![CDATA[%s]]></ToUserName>
-                    <FromUserName><![CDATA[%s]]></FromUserName>
-                    <CreateTime>%s</CreateTime>
-                    <MsgType><![CDATA[text]]></MsgType>
-                    <Content><![CDATA[%s]]></Content>
-                    <FuncFlag>%d</FuncFlag>
-                    </xml>";
+        include("wx_tpl.php");
+        // $textTpl = "<xml>
+        //             <ToUserName><![CDATA[%s]]></ToUserName>
+        //             <FromUserName><![CDATA[%s]]></FromUserName>
+        //             <CreateTime>%s</CreateTime>
+        //             <MsgType><![CDATA[text]]></MsgType>
+        //             <Content><![CDATA[%s]]></Content>
+        //             <FuncFlag>%d</FuncFlag>
+        //             </xml>";
         $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, time(), $content, $flag);
         return $resultStr;
     }
