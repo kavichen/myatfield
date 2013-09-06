@@ -1,13 +1,47 @@
 <?php
-/**
-  * wechat php test
-  */
-
-//define your token
+include_once("wx_tpl.php");
+// define your token
 define("TOKEN", "kavichen");
-$wechatObj = new wechatCallbackapiTest();
-$wechatObj->responseMsg();
-$wechatObj->valid();
+//$wechatObj = new wechatCallbackapiTest();
+//$wechatObj->responseMsg();
+// $wechatObj->valid();
+$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+
+//extract post data
+if (!empty($postStr)){
+
+    $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+
+    $fromUsername = $postObj->FromUserName; // 发送消息方ID
+
+    $toUsername = $postObj->ToUserName; // 接收消息方 ID
+    
+    $from_MsgType = $postObj->MsgType; // 消息类型
+
+    switch($from_MsgType)
+    {
+    case "text":
+        $resultStr = $this->handleText($postObj);
+        break;
+    case "event":
+        $from_Event  = $postObj->Event; 
+        if($from_Event == "subscribe")  // 关注时需要发送的信息
+        {
+            $msgType = "text";
+            $contentStr = "[害羞]";
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
+            echo $resultStr;
+            exit;
+        }
+    default:
+        $resultStr = "Unknow msg type: ".$from_MsgType;
+        break;
+    }
+    // echo $resultStr;
+}else {
+    echo "";
+    exit;
+}
 
 class wechatCallbackapiTest
 {
@@ -80,7 +114,9 @@ class wechatCallbackapiTest
                 else
                 {
                     $contentStr =
-                        "$fromUsername". "$toUsername".
+                        "$fromUsername". 
+                        "\n".
+                        "$toUsername".
                         "\n".
                         "【".$data->weatherinfo->city."天气预报】\n".$data->weatherinfo->date_y." ".$data->weatherinfo->fchh."时发布"."\n\n实时天气\n".$data->weatherinfo->weather1." ".$data->weatherinfo->temp1." ".$data->weatherinfo->wind1."\n\n温馨提示：".$data->weatherinfo->index_d."\n\n明天\n".$data->weatherinfo->weather2." ".$data->weatherinfo->temp2." ".$data->weatherinfo->wind2."\n\n后天\n".$data->weatherinfo->weather3." ".$data->weatherinfo->temp3." ".$data->weatherinfo->wind3;
                 }
