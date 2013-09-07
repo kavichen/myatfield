@@ -180,7 +180,7 @@ class wechatCallback
                 <MsgType><![CDATA[$msgType]]></MsgType>\n
                 <Content><![CDATA[$contentStr]]></Content>\n
                 <FuncFlag>0</FuncFlag>\n
-                </xml>"
+                </xml>";
                 // $contentStr = "感谢您关注C's A.T.Field".
                 //                 "\n".
                 //                 "\n".
@@ -188,7 +188,6 @@ class wechatCallback
                 //                 "\n".
                 //                 "\n".
                 //                 "更多内容，敬请期待...";
-
                 break;
             default :
                 $contentStr = "Unknow Event: ".$object->Event;
