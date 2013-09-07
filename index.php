@@ -162,39 +162,45 @@ class wechatCallback
         }
     }
 
-    public function handleEvent($object)
+    public function handleEvent($postObj)
     {
-        $contentStr = "";
+        // $contentStr = "";
+        $resultStr = "";
+        $fromUsername = $postObj->FromUserName;
+        $toUsername = $postObj->ToUserName;
+        $msgType = $postObj->MsgType;
+        $contentStr = "[玫瑰]";
         switch ($object->Event)
         {
             case "subscribe":
-                $contentStr = "感谢您关注C's A.T.Field".
-                                "\n".
-                                "\n".
-                                "微信号：MyAtField (不分大小写)".
-                                "\n".
-                                "\n".
-                                "更多内容，敬请期待...";
+                $resultStr = "<xml>\n
+                <ToUserName><![CDATA[$fromUsername]]></ToUserName>\n
+                <FromUserName><![CDATA[$toUsername]]></FromUserName>\n
+                <CreateTime>time()</CreateTime>\n
+                <MsgType><![CDATA[$msgType]]></MsgType>\n
+                <Content><![CDATA[$contentStr]]></Content>\n
+                <FuncFlag>0</FuncFlag>\n
+                </xml>"
+                // $contentStr = "感谢您关注C's A.T.Field".
+                //                 "\n".
+                //                 "\n".
+                //                 "微信号：MyAtField (不分大小写)".
+                //                 "\n".
+                //                 "\n".
+                //                 "更多内容，敬请期待...";
+
                 break;
             default :
                 $contentStr = "Unknow Event: ".$object->Event;
                 break;
         }
-        $resultStr = $this->responseText($object, $contentStr);
+        // $resultStr = $this->responseText($object, $contentStr);
         return $resultStr;
     }
     
     public function responseText($object, $content, $flag=0)
     {
         include("wx_tpl.php");
-        // $textTpl = "<xml>
-        //             <ToUserName><![CDATA[%s]]></ToUserName>
-        //             <FromUserName><![CDATA[%s]]></FromUserName>
-        //             <CreateTime>%s</CreateTime>
-        //             <MsgType><![CDATA[text]]></MsgType>
-        //             <Content><![CDATA[%s]]></Content>
-        //             <FuncFlag>%d</FuncFlag>
-        //             </xml>";
         $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, time(), $content, $flag);
         return $resultStr;
     }
