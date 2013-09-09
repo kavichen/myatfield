@@ -167,12 +167,12 @@ class wechatCallback
 
     public function handleEvent($postObj)
     {
-        // $contentStr = "";
-        $resultStr = "";
-        $fromUsername = $postObj->FromUserName;
-        $toUsername = $postObj->ToUserName;
-        $msgType = $postObj->MsgType;
-        $contentStr = "[玫瑰]";
+        $contentStr = "";
+        // $resultStr = "";
+        // $fromUsername = $postObj->FromUserName;
+        // $toUsername = $postObj->ToUserName;
+        // $msgType = $postObj->MsgType;
+        // $contentStr = "[玫瑰]";
         switch ($object->Event)
         {
             case "subscribe":
@@ -196,8 +196,8 @@ class wechatCallback
                 $contentStr = "Unknow Event: ".$object->Event;
                 break;
         }
-        // $resultStr = $this->responseText($object, $contentStr);
-        return $resultStr;
+        $resultStr = $this->responseText($object, $contentStr);
+        // return $resultStr;
     }
     
     public function responseText($object, $content, $flag=0)
