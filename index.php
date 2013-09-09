@@ -99,7 +99,7 @@ class wechatCallback
                     // $resultStr = "meiyoufanying";
                         break;
                     case "event":
-                        if(!empty($this->handleEvent($postObj))) $resultStr = "ok";
+                        if(!empty($RX_TYPE)) $resultStr = "ok";
                         else $resultStr = $RX_TYPE;
                         break;
                     default:
