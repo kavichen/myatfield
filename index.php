@@ -94,12 +94,12 @@ class wechatCallback
                 switch($RX_TYPE)
                 {
                     case "text":
-                        $resultStr = $this->handleText($postObj);
-                        // $resultStr = $
+                        // $resultStr = $this->handleText($postObj);
+                        $resultStr = $RX_TYPE;
                         break;
                     case "event":
                         // $resultStr = $this->handleEvent($postObj);
-                        $resultStr = "event";
+                        $resultStr = $RX_TYPE;
                         break;
                     default:
                         $resultStr = "Unknow msg type: ".$RX_TYPE;
