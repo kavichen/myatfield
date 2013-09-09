@@ -94,9 +94,9 @@ class wechatCallback
                 switch($RX_TYPE)
                 {
                     case "text":
-                        // $resultStr = $this->handleText($postObj);
+                        $resultStr = $this->handleText($postObj);
                         // $resultStr = "ca".$RX_TYPE;
-                    $resultStr = "meiyoufanying";
+                    // $resultStr = "meiyoufanying";
                         break;
                     case "event":
                         // $resultStr = $this->handleEvent($postObj);
