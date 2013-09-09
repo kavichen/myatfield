@@ -167,15 +167,15 @@ class wechatCallback
 
     public function handleEvent($object)
     {
-        $contentStr = "";
+        // $contentStr = "";
         // $resultStr = "";
         // $fromUsername = $postObj->FromUserName;
         // $toUsername = $postObj->ToUserName;
         // $msgType = $postObj->MsgType;
         // $contentStr = "[玫瑰]";
-        switch ($object->Event)
-        {
-            case "subscribe":
+        // switch ($object->Event)
+        // {
+        //     case "subscribe":
                 // $resultStr = "<xml>\n
                 // <ToUserName><![CDATA[$fromUsername]]></ToUserName>\n
                 // <FromUserName><![CDATA[$toUsername]]></FromUserName>\n
@@ -191,11 +191,11 @@ class wechatCallback
                                 "\n".
                                 "\n".
                                 "更多内容，敬请期待...";
-                break;
-            default :
-                $contentStr = "Unknow Event: ".$object->Event;
-                break;
-        }
+                // break;
+        //     default :
+        //         $contentStr = "Unknow Event: ".$object->Event;
+        //         break;
+        // }
         $resultStr = $this->responseText($object, $contentStr);
         return $resultStr;
     }
