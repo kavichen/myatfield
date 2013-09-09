@@ -99,8 +99,9 @@ class wechatCallback
                     // $resultStr = "meiyoufanying";
                         break;
                     case "event":
-                        if(!empty($RX_TYPE)) $resultStr = "ok";
-                        else $resultStr = $RX_TYPE;
+                        $resultStr = $this->handleEvent($postObj);
+                        // if(!empty($RX_TYPE)) $resultStr = "ok";
+                        // else $resultStr = $RX_TYPE;
                         break;
                     default:
                         $resultStr = "Unknow msg type: ".$RX_TYPE;
@@ -175,21 +176,21 @@ class wechatCallback
         switch ($object->Event)
         {
             case "subscribe":
-                $resultStr = "<xml>\n
-                <ToUserName><![CDATA[$fromUsername]]></ToUserName>\n
-                <FromUserName><![CDATA[$toUsername]]></FromUserName>\n
-                <CreateTime>time()</CreateTime>\n
-                <MsgType><![CDATA[$msgType]]></MsgType>\n
-                <Content><![CDATA[$contentStr]]></Content>\n
-                <FuncFlag>0</FuncFlag>\n
-                </xml>";
-                // $contentStr = "感谢您关注C's A.T.Field".
-                //                 "\n".
-                //                 "\n".
-                //                 "微信号：MyAtField (不分大小写)".
-                //                 "\n".
-                //                 "\n".
-                //                 "更多内容，敬请期待...";
+                // $resultStr = "<xml>\n
+                // <ToUserName><![CDATA[$fromUsername]]></ToUserName>\n
+                // <FromUserName><![CDATA[$toUsername]]></FromUserName>\n
+                // <CreateTime>time()</CreateTime>\n
+                // <MsgType><![CDATA[$msgType]]></MsgType>\n
+                // <Content><![CDATA[$contentStr]]></Content>\n
+                // <FuncFlag>0</FuncFlag>\n
+                // </xml>";
+                $contentStr = "感谢您关注C's A.T.Field".
+                                "\n".
+                                "\n".
+                                "微信号：MyAtField (不分大小写)".
+                                "\n".
+                                "\n".
+                                "更多内容，敬请期待...";
                 break;
             default :
                 $contentStr = "Unknow Event: ".$object->Event;
