@@ -98,7 +98,8 @@ class wechatCallback
                         // $resultStr = $
                         break;
                     case "event":
-                        $resultStr = $this->handleEvent($postObj);
+                        // $resultStr = $this->handleEvent($postObj);
+                        $resultStr = "event";
                         break;
                     default:
                         $resultStr = "Unknow msg type: ".$RX_TYPE;
