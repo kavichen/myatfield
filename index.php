@@ -137,6 +137,7 @@ class wechatCallback
             $resultStr .="</Articles>\n
                 <FuncFlag>0</FuncFlag>\n
                 </xml>";
+            break;
         default :
             $contentStr = "Unknow Event: ".$object->Event;
             break;
