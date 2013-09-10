@@ -168,36 +168,46 @@ class wechatCallback
 
     public function handleEvent($object)
     {
-        $contentStr = "";
-        // $resultStr = "";
-        // $fromUsername = $postObj->FromUserName;
-        // $toUsername = $postObj->ToUserName;
-        // $msgType = $postObj->MsgType;
-        // $contentStr = "[玫瑰]";
+        //$contentStr = "";
+         $resultStr = "";
+         $fromUsername = $object->FromUserName;
+         $toUsername = $object->ToUserName;
+        // $msgType = $object->MsgType;
+         $contentStr = "[玫瑰]";
         switch ($object->Event)
         {
             case "subscribe":
-                // $resultStr = "<xml>\n
-                // <ToUserName><![CDATA[$fromUsername]]></ToUserName>\n
-                // <FromUserName><![CDATA[$toUsername]]></FromUserName>\n
-                // <CreateTime>time()</CreateTime>\n
-                // <MsgType><![CDATA[$msgType]]></MsgType>\n
-                // <Content><![CDATA[$contentStr]]></Content>\n
-                // <FuncFlag>0</FuncFlag>\n
-                // </xml>";
-                $contentStr = "感谢您关注C's A.T.Field".
-                                "\n".
-                                "\n".
-                                "微信号：MyAtField (不分大小写)".
-                                "\n".
-                                "\n".
-                                "更多内容，敬请期待...";
-                break;
+                 $resultStr = "<xml>\n
+                 <ToUserName><![CDATA[".$fromUsername."]]></ToUserName>\n
+                 <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
+                 <CreateTime>".time()."</CreateTime>\n
+                 <MsgType><![CDATA[news]]></MsgType>\n
+                 <ArticleCount>1</ArticleCount>\n
+                 <Articles>\n";
+                 $resultStr .="<item>\n
+                     <Title><![CDATA[test]]></Title>\n
+                     <Description><![CDDTA[]]</Description>\n
+                     <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
+                     <Url><![CDATA[http://chenqiwei.com]]</Url>\n
+                     </item>\n";
+                 $resultStr .="</Articles>\n
+                     <FuncFlag>0</FuncFlag>\n
+                     </xml>";
+                /*
+                 *$contentStr = "感谢您关注C's A.T.Field".
+                 *                "\n".
+                 *                "\n".
+                 *                "微信号：MyAtField (不分大小写)".
+                 *                "\n".
+                 *                "\n".
+                 *                "更多内容，敬请期待...";
+                 *break;
+                 */
             default :
                 $contentStr = "Unknow Event: ".$object->Event;
                 break;
         }
-        $resultStr = $this->responseText($object, $contentStr);
+       // $resultStr = $this->responseText($object, $contentStr);
         return $resultStr;
     }
     
