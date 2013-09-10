@@ -7,65 +7,6 @@ $wechatObj->responseMsg();
 // $wechatObj->valid();
 // $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 
-// //extract post data
-// if (!empty($postStr)){
-
-//     $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-
-//     $fromUsername = $postObj->FromUserName; // 发送消息方ID
-
-//     $toUsername = $postObj->ToUserName; // 接收消息方 ID
-    
-//     $from_MsgType = $postObj->MsgType; // 消息类型
-
-//     if($from_MsgType=="event")
-//     {
-//         if($from_MsgType == "subscribe")
-//         {
-//             $msgType = "text";
-//              $contentStr = "[玫瑰]";
-//                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
-//                 echo $resultStr;
-//                 exit;
-//         }
-//     }else if($from_MsgType == "text"){
-//         echo "fuck";
-//         exit;
-//     }
-
-
-
-//     // switch($from_MsgType)
-//     // {
-//     // case "text":
-
-//     //     $contentStr = "[害羞]";
-//     //     $resultStr = sprintf($textTpl,$fromUsername,$toUsername,time(),$msgType,$contentStr);
-//     //     echo $resultStr;
-//     //     // $resultStr = $this->handleText($postObj);
-//     //     exit;
-//     // case "event":
-//     //     $from_Event  = $postObj->Event; 
-//     //     if($from_Event == "subscribe")  // 关注时需要发送的信息
-//     //     {
-//     //         $msgType = "text";
-//     //         $contentStr = "[害羞]";
-//     //         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
-//     //         echo $resultStr;
-//     //         exit;
-//     //     }
-//     // default:
-//     //     $resultStr = "Unknow msg type: ".$from_MsgType;
-//     //     echo $resultStr;
-//     //     break;
-//     // }
-//     // echo $resultStr;
-// }
-// else {
-//     echo "fuck";
-//     exit;
-// }
-
 class wechatCallback
 {
     // include("wx_tpl.php");
@@ -87,28 +28,23 @@ class wechatCallback
 
         //extract post data
         if (!empty($postStr)){
-                
-                $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-                $RX_TYPE = trim($postObj->MsgType);
 
-                switch($RX_TYPE)
-                {
-                    case "text":
-                        $resultStr = $this->handleText($postObj);
-                        // $resultStr = "ca".$RX_TYPE;
-                    // $resultStr = "meiyoufanying";
-                        break;
-                    case "event":
-                        $resultStr = $this->handleEvent($postObj);
+            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $RX_TYPE = trim($postObj->MsgType);
 
-                        // if(!empty($RX_TYPE)) $resultStr = "ok";
-                        // else $resultStr = $RX_TYPE;
-                        break;
-                    default:
-                        $resultStr = "Unknow msg type: ".$RX_TYPE;
-                        break;
-                }
-                echo $resultStr;
+            switch($RX_TYPE)
+            {
+            case "text":
+                $resultStr = $this->handleText($postObj);
+                break;
+            case "event":
+                $resultStr = $this->handleEvent($postObj);
+                break;
+            default:
+                $resultStr = "Unknow msg type: ".$RX_TYPE;
+                break;
+            }
+            echo $resultStr;
         }else {
             echo "";
             exit;
@@ -145,19 +81,15 @@ class wechatCallback
                 else
                 {
                     $contentStr =
-                        "$fromUsername". 
-                        "\n".
-                        "$toUsername".
-                        "\n".
                         "【".$data->weatherinfo->city."天气预报】\n".$data->weatherinfo->date_y." ".$data->weatherinfo->fchh."时发布"."\n\n实时天气\n".$data->weatherinfo->weather1." ".$data->weatherinfo->temp1." ".$data->weatherinfo->wind1."\n\n温馨提示：".$data->weatherinfo->index_d."\n\n明天\n".$data->weatherinfo->weather2." ".$data->weatherinfo->temp2." ".$data->weatherinfo->wind2."\n\n后天\n".$data->weatherinfo->weather3." ".$data->weatherinfo->temp3." ".$data->weatherinfo->wind3;
                 }
             }
             else
             {
-            $msgType = "text";
-            $contentStr = "陈琦威：".
-                            "\n".
-                            "平台目前处于开发阶段，我可以收到你发过来的信息，但是不能处理，请见谅！";
+                $msgType = "text";
+                $contentStr = "陈琦威：".
+                    "\n".
+                    "平台目前处于开发阶段，我可以收到你发过来的信息，但是不能处理，请见谅！";
             }
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
             echo $resultStr;
@@ -169,48 +101,42 @@ class wechatCallback
     public function handleEvent($object)
     {
         //$contentStr = "";
-         $resultStr = "";
-         $fromUsername = $object->FromUserName;
-         $toUsername = $object->ToUserName;
-        // $msgType = $object->MsgType;
-         $contentStr = "[玫瑰]";
+        $resultStr = "";
+        $fromUsername = $object->FromUserName;
+        $toUsername = $object->ToUserName;
         switch ($object->Event)
         {
-            case "subscribe":
-                 $resultStr = "<xml>\n
-                 <ToUserName><![CDATA[".$fromUsername."]]></ToUserName>\n
-                 <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
-                 <CreateTime>".time()."</CreateTime>\n
-                 <MsgType><![CDATA[news]]></MsgType>\n
-                 <ArticleCount>1</ArticleCount>\n
-                 <Articles>\n";
-                 $resultStr .="<item>\n
-                     <Title><![CDATA[test]]></Title>\n
-                     <Description><![CDDTA[]]</Description>\n
-                     <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
-                     <Url><![CDATA[http://chenqiwei.com]]</Url>\n
-                     </item>\n";
-                 $resultStr .="</Articles>\n
-                     <FuncFlag>0</FuncFlag>\n
-                     </xml>";
-                /*
-                 *$contentStr = "感谢您关注C's A.T.Field".
-                 *                "\n".
-                 *                "\n".
-                 *                "微信号：MyAtField (不分大小写)".
-                 *                "\n".
-                 *                "\n".
-                 *                "更多内容，敬请期待...";
-                 *break;
-                 */
-            default :
-                $contentStr = "Unknow Event: ".$object->Event;
-                break;
+        case "subscribe":
+            $resultStr = "<xml>\n
+                <ToUserName><![CDATA[".$fromUsername."]]></ToUserName>\n
+                <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
+                <CreateTime>".time()."</CreateTime>\n
+                <MsgType><![CDATA[news]]></MsgType>\n
+                <ArticleCount>2</ArticleCount>\n
+                <Articles>\n";
+            $resultStr .="<item>\n
+                <Title><![CDATA[test]]></Title>\n
+                <Description><![CDDTA[]]</Description>\n
+                <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
+                <Url><![CDATA[http://chenqiwei.com]]</Url>\n
+                </item>\n";
+            $resultStr .= "<item>\n
+                <Title><![CDATA[test]]></Title>
+                <Description><![CDATA[]]></Description>
+                <PirUrl><![CDATA[http://flic.kr/p/bDgC35]]</PicUrl>
+                <Url><![CDATA[http://chenqiwei.com]]</Url>
+                </item>
+                ";
+            $resultStr .="</Articles>\n
+                <FuncFlag>0</FuncFlag>\n
+                </xml>";
+        default :
+            $contentStr = "Unknow Event: ".$object->Event;
+            break;
         }
-       // $resultStr = $this->responseText($object, $contentStr);
         return $resultStr;
     }
-    
+
     public function responseText($object, $content, $flag=0)
     {
         // include("wx_tpl.php");
@@ -244,13 +170,13 @@ class wechatCallback
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];    
-                
+
         $token = TOKEN;
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr);
         $tmpStr = implode( $tmpArr );
         $tmpStr = sha1( $tmpStr );
-        
+
         if( $tmpStr == $signature ){
             return true;
         }else{
