@@ -122,11 +122,10 @@ class wechatCallback
                 </item>\n";
             $resultStr .= "<item>\n
                 <Title><![CDATA[test]]></Title>\n
-                <Description><![CDATA[test]]></Description>\n
+                <Description><![CDATA[]]></Description>\n
                 <PirUrl><![CDATA[http://flic.kr/p/bDgC35]]</PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]</Url>\n
-                </item>\n
-                ";
+                </item>\n";
             $resultStr .="</Articles>\n
                 <FuncFlag>0</FuncFlag>\n
                 </xml>";
