@@ -133,10 +133,11 @@ class wechatCallback
              *    <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
              *    <Url><![CDATA[http://chenqiwei.com]]</Url>\n
              *    </item>\n";
+             <FuncFlag>0</FuncFlag>\n
+
              */
             $resultStr .="</Articles>\n
-                <FuncFlag>0</FuncFlag>\n
-                </xml>";
+                               </xml>";
             break;
         default :
             $contentStr = "Unknow Event: ".$object->Event;
