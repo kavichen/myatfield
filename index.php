@@ -107,25 +107,48 @@ class wechatCallback
         switch ($object->Event)
         {
         case "subscribe":
-            $resultStr = "<xml>\n
+            /*
+             *$resultStr = "<xml>\n
+             *    <ToUserName><![CDATA[".$fromUsername."]]></ToUserName>\n
+             *    <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
+             *    <CreateTime>".time()."</CreateTime>\n
+             *    <MsgType><![CDATA[news]]></MsgType>\n
+             *    <ArticleCount>2</ArticleCount>\n
+             *    <Articles>\n";
+             *$resultStr .="<item>\n
+             *    <Title><![CDATA[test]]></Title>\n
+             *    <Description><![CDDTA[]]></Description>\n
+             *    <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
+             *    <Url><![CDATA[http://chenqiwei.com]]</Url>\n
+             *    </item>\n";
+             *$resultStr .= "<item>\n
+             *    <Title><![CDATA[test2]]></Title>\n
+             *    <Description><![CDATA[]]></Description>\n
+             *    <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
+             *    <Url><![CDATA[http://chenqiwei.com]]</Url>\n
+             *    </item>\n";
+             */
+             $resultStr = "<xml>\n
                 <ToUserName><![CDATA[".$fromUsername."]]></ToUserName>\n
                 <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
                 <CreateTime>".time()."</CreateTime>\n
                 <MsgType><![CDATA[news]]></MsgType>\n
                 <ArticleCount>2</ArticleCount>\n
-                <Articles>\n";
-            $resultStr .="<item>\n
+                <Articles>\n
+                <item>\n
                 <Title><![CDATA[test]]></Title>\n
                 <Description><![CDDTA[]]></Description>\n
                 <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]</Url>\n
-                </item>\n";
-            $resultStr .= "<item>\n
+                </item>\n
+                <item>\n
                 <Title><![CDATA[test2]]></Title>\n
                 <Description><![CDATA[]]></Description>\n
                 <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]</Url>\n
-                </item>\n";
+                </item>\n
+                </Articles>\n
+                </xml>";
             /*
              *$resultStr .="<item>\n
              *    <Title><![CDATA[test1]]></Title>\n
@@ -136,8 +159,10 @@ class wechatCallback
             <FuncFlag>0</FuncFlag>\n
 
              */
-            $resultStr .="</Articles>\n
-                </xml>";
+            /*
+             *$resultStr .="</Articles>\n
+             *    </xml>";
+             */
             break;
         default :
             $contentStr = "Unknow Event: ".$object->Event;
