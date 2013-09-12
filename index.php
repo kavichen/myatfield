@@ -129,6 +129,8 @@ class wechatCallback
                 $msgType = "text";
                 $contentStr = "陈琦威：".
                     "\n";
+                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+
             }
             else
             {
