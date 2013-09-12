@@ -97,7 +97,7 @@ class wechatCallback
                 <ArticleCount>1</ArticleCount>\n
                 <Articles>\n";
                 $resultStr.="<item>\n
-                <Title><![CDATA[1]]></Title>\n
+                <Title><![CDATA[wei]]></Title>\n
                 <Description><![CDATA[]]></Description>\n
                 <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]></Url>\n
@@ -116,6 +116,9 @@ class wechatCallback
                  */
                 $resultStr.="</Articles>\n
                              </xml>";
+                $file = fopen("test.txt","w");
+                fwrite($file,$resultStr);
+                fclose($file);
                 echo $resultStr;
                 break;
                 /*
