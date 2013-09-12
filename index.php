@@ -118,7 +118,7 @@ class wechatCallback
                 $resultStr.="</Articles>\n
                              </xml>";
                 $file = fopen("test.txt","w");
-                fwrite($file,$resultStr);
+                fwrite($file,"test");
                 fclose($file);
                 echo $resultStr;
                 break;
