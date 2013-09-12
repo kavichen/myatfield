@@ -70,10 +70,11 @@ class wechatCallback
         if(!empty( $keyword ))
         {
             $msgType = "text";
-            // 天气
+            // 天气 
             $str = mb_substr($keyword, -2, 2,"UTF-8");
             $str_key = mb_substr($keyword, 0, -2,"UTF-8");
-            if(($str == '天气' || $str == '天氣') && !empty($str_key)){
+            if(($str == '天气' || $str == '天氣') && !empty($str_key))
+            {
                 $data = $this->weather($str_key);
                 if(empty($data->weatherinfo)){
                     $contentStr = "干，没有查到\"".$str_key."\"的天气信息！";
@@ -83,6 +84,27 @@ class wechatCallback
                     $contentStr =
                         "【".$data->weatherinfo->city."天气预报】\n".$data->weatherinfo->date_y." ".$data->weatherinfo->fchh."时发布"."\n\n实时天气\n".$data->weatherinfo->weather1." ".$data->weatherinfo->temp1." ".$data->weatherinfo->wind1."\n\n温馨提示：".$data->weatherinfo->index_d."\n\n明天\n".$data->weatherinfo->weather2." ".$data->weatherinfo->temp2." ".$data->weatherinfo->wind2."\n\n后天\n".$data->weatherinfo->weather3." ".$data->weatherinfo->temp3." ".$data->weatherinfo->wind3;
                 }
+            }
+            else if($str == '订阅')
+            {
+                $resultStr = "<xml>\n
+                <ToUserName><![CDATA[".$fromUsername."]]></ToUserName>\n
+                <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
+                <CreateTime>".time()."</CreateTime>\n
+                <MsgType><![CDATA[news]]></MsgType>\n
+                <ArticleCount>2</ArticleCount>\n
+                <Articles>\n";
+                $resultStr .="<item>\n
+                <Title><![CDATA[test]]></Title>\n
+                <Description><![CDDTA[]]></Description>\n
+                <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
+                <Url><![CDATA[http://chenqiwei.com]]</Url>\n
+                </item>\n";
+                $resultStr .= "<item>\n <Title><![CDATA[test2]]></Title>\n <Description><![CDATA[]]></Description>\n <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n <Url><![CDATA[http://chenqiwei.com]]</Url>\n </item>\n";
+                $resultStr .="</Articles>\n
+                    </xml>";
+                echo $resultStr;
+                break;
             }
             else
             {
