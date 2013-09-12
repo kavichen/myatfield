@@ -120,12 +120,12 @@ class wechatCallback
                 <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]</Url>\n
                 </item>\n";
-            //            $resultStr .= "<item>\n
-            //                <Title><![CDATA[test2]]></Title>\n
-            //                <Description><![CDATA[]]></Description>\n
-            //                <PicUrl><![CDATA[http://flic.kr/p/bDgC35]]</PicUrl>\n
-            //                <Url><![CDATA[http://chenqiwei.com]]</Url>\n
-            //                </item>\n";
+            $resultStr .= "<item>\n
+                <Title><![CDATA[test2]]></Title>\n
+                <Description><![CDATA[]]></Description>\n
+                <PicUrl><![CDATA[http://flic.kr/p/bDgC35]]</PicUrl>\n
+                <Url><![CDATA[http://chenqiwei.com]]</Url>\n
+                </item>\n";
             /*
              *$resultStr .="<item>\n
              *    <Title><![CDATA[test1]]></Title>\n
@@ -137,7 +137,7 @@ class wechatCallback
 
              */
             $resultStr .="</Articles>\n
-                               </xml>";
+                </xml>";
             break;
         default :
             $contentStr = "Unknow Event: ".$object->Event;
