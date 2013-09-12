@@ -89,20 +89,22 @@ class wechatCallback
             }
             else if($str == '订阅')
             {
-                $resultStr = "haha";
-                $resultStr. = "<xml>\n
-                <ToUserName><![CDATA[".$fromUsername."]]></ToUserName>\n
-                <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
-                <CreateTime>".time()."</CreateTime>\n
-                <MsgType><![CDATA[news]]></MsgType>\n
-                <ArticleCount>1</ArticleCount>\n
-                <Articles>\n";
-                $resultStr.="<item>\n
-                <Title><![CDATA[wei]]></Title>\n
-                <Description><![CDATA[]]></Description>\n
-                <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
-                <Url><![CDATA[http://chenqiwei.com]]></Url>\n
-                </item>\n";
+                /*
+                 *$resultStr = "haha";
+                 *$resultStr. = "<xml>\n
+                 *<ToUserName><![CDATA[".$fromUsername."]]></ToUserName>\n
+                 *<FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
+                 *<CreateTime>".time()."</CreateTime>\n
+                 *<MsgType><![CDATA[news]]></MsgType>\n
+                 *<ArticleCount>1</ArticleCount>\n
+                 *<Articles>\n";
+                 *$resultStr.="<item>\n
+                 *<Title><![CDATA[wei]]></Title>\n
+                 *<Description><![CDATA[]]></Description>\n
+                 *<PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
+                 *<Url><![CDATA[http://chenqiwei.com]]></Url>\n
+                 *</item>\n";
+                 */
                 /*
                  *$resultStr.= "<item>\n 
                  *    <Title><![CDATA[2]]></Title>\n
@@ -115,18 +117,18 @@ class wechatCallback
                 /*
                  *$resultStr .= "<item>\n <Title><![CDATA[test2]]></Title>\n <Description><![CDATA[]]></Description>\n <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n <Url><![CDATA[http://chenqiwei.com]]</Url>\n </item>\n";
                  */
-                $resultStr.="</Articles>\n
-                             </xml>";
-                $file = fopen("test.txt","w");
-                fwrite($file,"test");
-                fclose($file);
-                echo $resultStr;
-                break;
                 /*
-                 *$msgType = "text";
-                 *$contentStr = "陈琦威：".
-                 *    "\n";
+                 *$resultStr.="</Articles>\n
+                 *             </xml>";
+                 *$file = fopen("test.txt","w");
+                 *fwrite($file,"test");
+                 *fclose($file);
+                 *echo $resultStr;
+                 *break;
                  */
+                $msgType = "text";
+                $contentStr = "陈琦威：".
+                    "\n";
             }
             else
             {
