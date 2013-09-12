@@ -94,7 +94,7 @@ class wechatCallback
                 <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
                 <CreateTime>".time()."</CreateTime>\n
                 <MsgType><![CDATA[news]]></MsgType>\n
-                <ArticleCount>3</ArticleCount>\n
+                <ArticleCount>1</ArticleCount>\n
                 <Articles>\n";
                 $resultStr.="<item>\n
                 <Title><![CDATA[1]]></Title>\n
@@ -102,12 +102,14 @@ class wechatCallback
                 <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]></Url>\n
                 </item>\n";
-                $resultStr.= "<item>\n 
-                    <Title><![CDATA[2]]></Title>\n
-                    <Description><![CDATA[]]></Description>\n
-                    <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
-                    <Url><![CDATA[http://chenqiwei.com]]></Url>\n 
-                    </item>\n";
+                /*
+                 *$resultStr.= "<item>\n 
+                 *    <Title><![CDATA[2]]></Title>\n
+                 *    <Description><![CDATA[]]></Description>\n
+                 *    <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
+                 *    <Url><![CDATA[http://chenqiwei.com]]></Url>\n 
+                 *    </item>\n";
+                 */
 
                 /*
                  *$resultStr .= "<item>\n <Title><![CDATA[test2]]></Title>\n <Description><![CDATA[]]></Description>\n <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n <Url><![CDATA[http://chenqiwei.com]]</Url>\n </item>\n";
