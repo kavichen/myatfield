@@ -84,6 +84,8 @@ class wechatCallback
                     $contentStr =
                         "【".$data->weatherinfo->city."天气预报】\n".$data->weatherinfo->date_y." ".$data->weatherinfo->fchh."时发布"."\n\n实时天气\n".$data->weatherinfo->weather1." ".$data->weatherinfo->temp1." ".$data->weatherinfo->wind1."\n\n温馨提示：".$data->weatherinfo->index_d."\n\n明天\n".$data->weatherinfo->weather2." ".$data->weatherinfo->temp2." ".$data->weatherinfo->wind2."\n\n后天\n".$data->weatherinfo->weather3." ".$data->weatherinfo->temp3." ".$data->weatherinfo->wind3;
                 }
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+
             }
             else if($str == '订阅')
             {
@@ -95,13 +97,13 @@ class wechatCallback
                 <ArticleCount>2</ArticleCount>\n
                 <Articles>\n";
                 $resultStr .="<item>\n
-                <Title><![CDATA[test]]></Title>\n
-                <Description><![CDDTA[test]]></Description>\n
+                <Title><![CDATA[1]]></Title>\n
+                <Description><![CDDTA[]]></Description>\n
                 <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]></Url>\n
                 </item>\n";
                 $resultStr .= "<item>\n 
-                    <Title><![CDATA[test2]]></Title>\n
+                    <Title><![CDATA[2]]></Title>\n
                     <Description><![CDATA[]]></Description>\n
                     <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
                     <Url><![CDATA[http://chenqiwei.com]]></Url>\n 
@@ -126,9 +128,10 @@ class wechatCallback
                 $contentStr = "陈琦威：".
                     "\n".
                     "平台目前处于开发阶段，我可以收到你发过来的信息，但是不能处理，请见谅！";
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+
             }
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-            echo $resultStr;
+                        echo $resultStr;
         }else{
             echo "Input something...";
         }
