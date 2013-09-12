@@ -96,13 +96,13 @@ class wechatCallback
                 <MsgType><![CDATA[news]]></MsgType>\n
                 <ArticleCount>2</ArticleCount>\n
                 <Articles>\n";
-                $resultStr .="<item>\n
+                $resultStr.="<item>\n
                 <Title><![CDATA[1]]></Title>\n
-                <Description><![CDDTA[]]></Description>\n
+                <Description><![CDATA[]]></Description>\n
                 <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]></Url>\n
                 </item>\n";
-                $resultStr .= "<item>\n 
+                $resultStr.= "<item>\n 
                     <Title><![CDATA[2]]></Title>\n
                     <Description><![CDATA[]]></Description>\n
                     <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]></PicUrl>\n
@@ -112,7 +112,8 @@ class wechatCallback
                 /*
                  *$resultStr .= "<item>\n <Title><![CDATA[test2]]></Title>\n <Description><![CDATA[]]></Description>\n <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n <Url><![CDATA[http://chenqiwei.com]]</Url>\n </item>\n";
                  */
-                $resultStr .="</Articles>\n
+                $resultStr.="</Articles>\n
+                    <FuncFlag>0</FuncFlag>\n
                               </xml>";
                 echo $resultStr;
                 break;
