@@ -89,7 +89,8 @@ class wechatCallback
             }
             else if($str == '订阅')
             {
-                $resultStr = "<xml>\n
+                $resultStr = "haha";
+                $resultStr. = "<xml>\n
                 <ToUserName><![CDATA[".$fromUsername."]]></ToUserName>\n
                 <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
                 <CreateTime>".time()."</CreateTime>\n
