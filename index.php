@@ -92,7 +92,7 @@ class wechatCallback
                 <FromUserName><![CDATA[".$toUsername."]]></FromUserName>\n
                 <CreateTime>".time()."</CreateTime>\n
                 <MsgType><![CDATA[news]]></MsgType>\n
-                <ArticleCount>2</ArticleCount>\n
+                <ArticleCount>1</ArticleCount>\n
                 <Articles>\n";
                 $resultStr .="<item>\n
                 <Title><![CDATA[test]]></Title>\n
