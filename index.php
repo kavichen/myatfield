@@ -116,7 +116,7 @@ class wechatCallback
                 <Articles>\n";
             $resultStr .="<item>\n
                 <Title><![CDATA[test]]></Title>\n
-                <Description><![CDDTA[]]</Description>\n
+                <Description><![CDDTA[]]></Description>\n
                 <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]</Url>\n
                 </item>\n";
