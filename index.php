@@ -100,7 +100,9 @@ class wechatCallback
                 <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n
                 <Url><![CDATA[http://chenqiwei.com]]</Url>\n
                 </item>\n";
-                $resultStr .= "<item>\n <Title><![CDATA[test2]]></Title>\n <Description><![CDATA[]]></Description>\n <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n <Url><![CDATA[http://chenqiwei.com]]</Url>\n </item>\n";
+                /*
+                 *$resultStr .= "<item>\n <Title><![CDATA[test2]]></Title>\n <Description><![CDATA[]]></Description>\n <PicUrl><![CDATA[http://chenqiwei.com/profile/8bit.jpg]]</PicUrl>\n <Url><![CDATA[http://chenqiwei.com]]</Url>\n </item>\n";
+                 */
                 $resultStr .="</Articles>\n
                     </xml>";
                 echo $resultStr;
